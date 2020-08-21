@@ -17,7 +17,8 @@ import { NavService } from './services/nav-service';
 import { FormsModule } from '@angular/forms'; 
 import { ReactiveFormsModule } from '@angular/forms';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
-import { EmployeeSercvice  } from './Services/emp-service.service'
+import { EmployeeSercvice  } from './Services/emp-service.service';
+import { EmployeeDetailsComponent } from './employee-details/employee-details.component'
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { EmployeeSercvice  } from './Services/emp-service.service'
     HeaderComponent,
     LoginComponent,
     GlobalLoaderComponent,
-    EmployeeListComponent
+    EmployeeListComponent,
+    EmployeeDetailsComponent
   ],
   imports: [
     BrowserModule,

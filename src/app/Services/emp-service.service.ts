@@ -27,7 +27,9 @@ export class EmployeeSercvice {
         return this.employees
     }
 
-    geEmployeetDetails(id){
-
+    geEmployeetDetails(empid){
+        const result = this.employees.find( ({ id }) => id === empid );
+        console.log(result)
+        return result
     }
 }

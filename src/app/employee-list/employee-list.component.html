@@ -1,5 +1,9 @@
 <div class="container">
 
+    <div class="row">
+        <button type="button" class="btn btn-success">Create</button>
+    </div>
+
     <h1>Employee List</h1>
   
     <table class="table table-striped">
@@ -24,7 +28,7 @@
   
           <td>{{ emp.employee_name }}</td>
   
-          <td><u>Details</u></td>
+          <td (click)="goToEmpDetails(emp.id)"><u>Details</u></td>
   
         </tr>
   

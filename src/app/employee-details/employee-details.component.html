@@ -1,0 +1,44 @@
+<div class="container">
+  <h1>Employee Details</h1>
+
+  <div class="row border">
+    <div class="col border">
+      ID
+    </div>
+
+    <div class="col border">
+      {{ employeeDetails.id }}
+    </div>
+  </div>
+
+  <div class="row border">
+    <div class="col border">
+      NAME
+    </div>
+
+    <div class="col border">
+      {{ employeeDetails.employee_name }}
+    </div>
+  </div>
+
+  <div class="row border">
+    <div class="col border">Salary</div>
+
+    <div class="col border">
+      {{ employeeDetails.employee_salary }}
+    </div>
+  </div>
+
+  <div class="row border">
+    <div class="col">AGE</div>
+
+    <div class="col border">
+      {{ employeeDetails.employee_age }}
+    </div>
+  </div>
+  <div class="row">
+    <button type="button" class="btn btn-dark mt-1" (click)="back()">Back</button>
+    <button type="button" class="btn btn-secondary mt-1" (click)="edit()">Edit</button>
+  </div>
+  
+</div>
