@@ -14,6 +14,8 @@ import {
   HTTP_INTERCEPTORS,
 } from '@angular/common/http';
 import { NavService } from './services/nav-service';
+import { FormsModule } from '@angular/forms'; 
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { NavService } from './services/nav-service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [ 
     NavService,
