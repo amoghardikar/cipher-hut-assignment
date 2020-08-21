@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { EmployeeSercvice } from '../Services/emp-service.service';
 import { Router } from '@angular/router';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-employee-list',
@@ -11,7 +11,11 @@ import {Location} from '@angular/common';
 })
 export class EmployeeListComponent implements OnInit {
   emplist = [];
-  constructor(private empService: EmployeeSercvice, private router: Router, private location: Location) {}
+  constructor(
+    private empService: EmployeeSercvice,
+    private router: Router,
+    private location: Location
+  ) {}
 
   ngOnInit(): void {
     this.empService.getEmployeesFromAPI().subscribe(
@@ -36,7 +40,10 @@ export class EmployeeListComponent implements OnInit {
     this.router.navigate(['/employee-details', { empid: id }]);
   }
 
-  back(){
+  back() {
     this.location.back();
+  }
+  createEmployee() {
+    this.router.navigate(['/create-employee'])
   }
 }

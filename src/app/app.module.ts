@@ -18,7 +18,12 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { EmployeeSercvice  } from './Services/emp-service.service';
-import { EmployeeDetailsComponent } from './employee-details/employee-details.component'
+import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
+import { CreateEmployeeComponent } from './create-employee/create-employee.component';
+import { EditEmployeeComponent } from './edit-employee/edit-employee.component'
+import { CustomFormsModule } from 'ng2-validation';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component'
+import { ConfirmationDialogService } from './Services/confirmation-dialog.service'
 
 @NgModule({
   declarations: [
@@ -27,22 +32,28 @@ import { EmployeeDetailsComponent } from './employee-details/employee-details.co
     LoginComponent,
     GlobalLoaderComponent,
     EmployeeListComponent,
-    EmployeeDetailsComponent
+    EmployeeDetailsComponent,
+    CreateEmployeeComponent,
+    EditEmployeeComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CustomFormsModule
   ],
   providers: [ 
     NavService,
     EmployeeSercvice,
     HttpClientModule,
     HttpClient,
+    ConfirmationDialogService,
     LoaderService,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },],
+    entryComponents: [ ConfirmationDialogComponent ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,85 @@
+<div class="container login-container">
+    <div class="row">
+      <div class="col center">
+        <div class="login-form-1">
+          <h3>Edit Employee</h3>
+          <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm">
+            <div class="form-group">
+              <input
+                class="form-control"
+                name="employee_name"
+                [(ngModel)]="model.employee_name"
+                #employee_name="ngModel"
+                [ngClass]="{ 'is-invalid': f.submitted && employee_name.invalid }"
+                required
+                placeholder="Employee Name"
+              />
+              <div *ngIf="f.submitted && employee_name.invalid">
+                <div *ngIf="employee_name.errors.required">
+                  Name is required
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <input
+                type="number"
+                class="form-control"
+                name="employee_age"
+                [(ngModel)]="model.employee_age"
+                #employee_age="ngModel"
+                [ngClass]="{ 'is-invalid': f.submitted && employee_age.invalid }"
+                pattern="^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$"
+                required
+                [min]="10"
+                [max]="100"
+                placeholder="Age (Max 100)"
+              />
+              <div *ngIf="f.submitted && employee_age.invalid">
+                <div *ngIf="employee_age.errors.required">
+                  Age is required
+                </div>
+                <div *ngIf="employee_age.errors?.max">
+                  Value cannot be greater than '100'
+                </div>
+                <div *ngIf="employee_age.errors?.min">
+                  Value cannot be smaller than '0'
+                </div>
+                <div *ngIf="employee_age.errors.pattern">
+                  Only numbers are permitted
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <input
+              type="number"
+              class="form-control"
+              name="employee_salary"
+              [(ngModel)]="model.employee_salary"
+              #employee_salary="ngModel"
+              [ngClass]="{ 'is-invalid': f.submitted && employee_salary.invalid }"
+              pattern="^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$"
+              required
+              [min]="10"
+              placeholder="Salary"
+            />
+              <div *ngIf="f.submitted && employee_salary.invalid">
+                <div *ngIf="employee_salary.errors.required">
+                  Salary is required
+                </div>
+                <div *ngIf="employee_salary.errors.pattern">
+                  Only numbers are permitted
+                </div>
+                <div *ngIf="employee_salary.errors?.min">
+                  Value cannot be smaller than '0'
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary">Edit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
