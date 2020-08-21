@@ -8,12 +8,18 @@ import { EmployeeSercvice } from '../Services/emp-service.service';
   styleUrls: ['./employee-list.component.css'],
 })
 export class EmployeeListComponent implements OnInit {
+   emplist = [];
   constructor(private empService: EmployeeSercvice) {}
 
   ngOnInit(): void {
-    this.empService.getEmployees().subscribe(
+    this.empService.getEmployeesFromAPI().subscribe(
       (res) => {
         console.log(res)
+        if(res['status'] = 'success'){
+          this.empService.setEmployees(res['data'])
+          this.emplist = this.empService.getEmployeeStoredList();
+          console.log( this.emplist)
+        }
       },
       (err) => {
         console.log(err)

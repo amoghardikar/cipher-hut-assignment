@@ -5,12 +5,12 @@ import { Constants } from '../Constants'
 export class EmployeeSercvice {
     employees = [];
     constructor(private http: HttpClient){}
-    getEmployees(){
+    getEmployeesFromAPI(){
         return this.http.get(Constants.HOST + 'employees')
     }
 
-    setEmployees(){
-
+    setEmployees(emplist){
+        this.employees = emplist
     }
 
     createEmployee(){
@@ -22,6 +22,9 @@ export class EmployeeSercvice {
     }
     deleteEmployee(){
 
+    }
+    getEmployeeStoredList(){
+        return this.employees
     }
 
     geEmployeetDetails(id){
