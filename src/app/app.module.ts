@@ -16,22 +16,27 @@ import {
 import { NavService } from './services/nav-service';
 import { FormsModule } from '@angular/forms'; 
 import { ReactiveFormsModule } from '@angular/forms';
+import { EmployeeListComponent } from './employee-list/employee-list.component';
+import { EmployeeSercvice  } from './Services/emp-service.service'
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     LoginComponent,
-    GlobalLoaderComponent
+    GlobalLoaderComponent,
+    EmployeeListComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule
   ],
   providers: [ 
     NavService,
+    EmployeeSercvice,
     HttpClientModule,
     HttpClient,
     LoaderService,
