@@ -13,7 +13,7 @@ import {
   HttpClient,
   HTTP_INTERCEPTORS,
 } from '@angular/common/http';
-import { NavService } from './services/nav-service';
+import { NavService } from './Services/nav-service.service';
 import { FormsModule } from '@angular/forms'; 
 import { ReactiveFormsModule } from '@angular/forms';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
@@ -24,7 +24,9 @@ import { EditEmployeeComponent } from './edit-employee/edit-employee.component'
 import { CustomFormsModule } from 'ng2-validation';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component'
 import { ConfirmationDialogService } from './Services/confirmation-dialog.service'
-
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+// Import library module
+import { NgxSpinnerModule } from "ngx-spinner";
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +45,8 @@ import { ConfirmationDialogService } from './Services/confirmation-dialog.servic
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    CustomFormsModule
+    CustomFormsModule,
+    NgxSpinnerModule
   ],
   providers: [ 
     NavService,
@@ -54,6 +57,8 @@ import { ConfirmationDialogService } from './Services/confirmation-dialog.servic
     LoaderService,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },],
     entryComponents: [ ConfirmationDialogComponent ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  
 })
 export class AppModule { }

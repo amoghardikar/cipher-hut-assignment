@@ -1,39 +1,31 @@
 <div class="container">
-
-    <div class="row">
-        <button type="button" class="btn btn-success" (click)="createEmployee()">Create</button>
-    </div>
-
-    <h1>Employee List</h1>
-  
-    <table class="table table-striped">
-  
-      <thead>
-  
-          <tr>
-  
-            <th>ID</th>
-  
-            <th>Name</th>
-  
-          </tr>
-  
-      </thead>
-  
-      <tbody>
-  
-        <tr *ngFor="let emp of emplist">
-  
-          <td>{{ emp.id }}</td>
-  
-          <td>{{ emp.employee_name }}</td>
-  
-          <td (click)="goToEmpDetails(emp.id)"><u>Details</u></td>
-  
-        </tr>
-  
-      </tbody>
-  
-    </table>
-  
+  <div class="row">
+    <button type="button" class="btn btn-success mt-5" (click)="createEmployee()">
+      Create
+    </button>
   </div>
+
+  <h1>Employee List</h1>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+
+        <th>Name</th>
+
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let emp of emplist">
+        <td>{{ emp.id }}</td>
+
+        <td>{{ emp.employee_name }}</td>
+
+        <td (click)="goToEmpDetails(emp.id)"><u class="cursor-hand">Details</u></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

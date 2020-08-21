@@ -1,0 +1,35 @@
+.row-height {
+  height: 100%;
+}
+.container-height {
+  height: 50px;
+  background: #2e2f30;
+}
+.icon {
+  position: absolute;
+  color: grey;
+  right: 35%;
+  top: 7px;
+}
+.search-box-parent {
+  width: 70%;
+}
+
+.dropdown-width {
+  width: 50px;
+}
+
+.text-color {
+  color: white;
+}
+
+.align-center {
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.parent {
+  height: 100%;
+}

@@ -1,9 +1,25 @@
 <div class="container container-height">
-    <div class="row row-height">
-      <div class="col align-self-center">
-        Login Time: 
+  <div class="row row-height">
+      <div class="col">
+        <div class="d-flex flex-row parent">
+            <div class="align-center text-color">CipherHut Assignment</div>
+         
+          </div>
       </div>
-    
+    <div class="col">
+      <div class="d-flex flex-row-reverse text-color parent" *ngIf="loggedIn">
+        <div class="align-center">
+          <button type="button" class="btn btn-light" (click)="logout()">
+            Logout
+          </button>
+        </div>
+        <div class="align-center mr-3">
+          <b
+            >Login Time: {{ sessionTime.h }}: {{ sessionTime.m }} :
+            {{ sessionTime.s }}</b
+          >
+        </div>
+      </div>
     </div>
   </div>
-  
+</div>

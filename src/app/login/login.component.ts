@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
+import { NavService } from '../Services/nav-service.service'
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ export class LoginComponent implements OnInit {
 
   usernameHardcoded = 'user';
   passwordHardcoded = 'user';
-  constructor(private router: Router) {}
+  constructor(private router: Router, private navService: NavService) {}
 
   ngOnInit(): void {}
 
@@ -27,6 +28,7 @@ export class LoginComponent implements OnInit {
     ) {
       alert('username and password did not match');
     } else {
+      this.navService.emitNavChangeEvent('loggedin')
       this.router.navigate(['/employee-list'])
     }
   }

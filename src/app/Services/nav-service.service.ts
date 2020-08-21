@@ -1,4 +1,5 @@
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
+@Injectable()
 export class NavService {
 
   // event emmitter to emit the data.

@@ -27,9 +27,7 @@
               "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": [
-        
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -122,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "cipher-hut-assignment"
+    }
+  },
+  "defaultProject": "cipher-hut-assignment",
+  "cli": {
+    "analytics": false
+  }
 }
