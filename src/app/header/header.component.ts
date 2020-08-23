@@ -19,15 +19,15 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('in header init');
-    this.loggedinstorageValue = localStorage.getItem('isloggedIn');
+    this.loggedinstorageValue = sessionStorage.getItem('isloggedIn');
     console.log(this.loggedinstorageValue);
-    // check if this is a relaod, then fetch values from localstorage.
+    // check if this is a relaod, then fetch values from sessionStorage.
     if (
       this.loggedinstorageValue !== null &&
       this.loggedinstorageValue == 'true'
     ) {
       this.loggedIn = true;
-      this.time = Number(localStorage.getItem('loggedinTime'));
+      this.time = Number(sessionStorage.getItem('loggedinTime'));
       this.startTimer();
     } else {
       
@@ -56,7 +56,7 @@ export class HeaderComponent implements OnInit {
       let currentDate = new Date();
       this.time++;
       this.sessionTime = this.secondsToTime(this.time);
-      localStorage.setItem('loggedinTime', String(this.time));
+      sessionStorage.setItem('loggedinTime', String(this.time));
     }, 1000);
   }
   // converting seconds to time
@@ -79,7 +79,7 @@ export class HeaderComponent implements OnInit {
   // clearing the interval and local storage.
   logout() {
     this.loggedIn = false;
-    localStorage.clear();
+    sessionStorage.clear();
     this.time = 0;
     clearInterval(this.interval);
     this.sessionTime = {};

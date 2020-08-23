@@ -17,9 +17,9 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, private navService: NavService) {}
 
   ngOnInit(): void {
-    // localStorage.clear();
+    // sessionStorage.clear();
     console.log('in init of login');
-    let isLoggedIn = localStorage.getItem('isloggedIn');
+    let isLoggedIn = sessionStorage.getItem('isloggedIn');
     console.log(isLoggedIn)
     if (isLoggedIn == 'true') {
       this.router.navigate(['/employee-list']);
@@ -39,8 +39,8 @@ export class LoginComponent implements OnInit {
       alert('username and password did not match');
     } else {
       // storing value to local storage if reload is happend then app wont push for login and timer weill not be set to 0.
-      localStorage.setItem('isloggedIn', 'true');
-      let isLoggedIn = localStorage.getItem('isloggedIn');
+      sessionStorage.setItem('isloggedIn', 'true');
+      let isLoggedIn = sessionStorage.getItem('isloggedIn');
       console.log(isLoggedIn)
       this.emitValue['loggedIn'] = true;
       // emmitting event to indicate that login is done, start the login count in header component.
