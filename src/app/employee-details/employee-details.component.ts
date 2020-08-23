@@ -10,6 +10,7 @@ import { ConfirmationDialogService } from '../Services/confirmation-dialog.servi
 })
 export class EmployeeDetailsComponent implements OnInit {
   id;
+  apiSuccess = false;
   constructor(
     private route: ActivatedRoute,
     private empService: EmployeeSercvice,
@@ -25,7 +26,11 @@ export class EmployeeDetailsComponent implements OnInit {
       console.log(res);
       if (res['status'] == 'success') {
         this.employeeDetails = res['data'];
+        this.apiSuccess = true;
       }
+    }, error => {
+      alert('error while getting employee details');
+      this.router.navigate(['/employee-list']);
     });
   }
   back() {

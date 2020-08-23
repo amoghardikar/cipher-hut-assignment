@@ -10,9 +10,11 @@ import { EmployeeSercvice } from '../Services/emp-service.service';
 export class EditEmployeeComponent implements OnInit {
   model: any = {};
   id;
+  apiSuccess = false;
   constructor(
     private route: ActivatedRoute,
-    private empService: EmployeeSercvice
+    private empService: EmployeeSercvice,
+    private router : Router
   ) {}
 
   ngOnInit(): void {
@@ -20,7 +22,12 @@ export class EditEmployeeComponent implements OnInit {
     this.empService.geEmployeetDetails(id).subscribe((res) => {
       if (res['status'] == 'success') {
         this.model = res['data'];
+        this.apiSuccess = true;
       }
+    }, err => {
+      alert('error fetching employee details.');
+      this.router.navigate(['/employee-list'])
+      
     });
     console.log(this.model);
   }
