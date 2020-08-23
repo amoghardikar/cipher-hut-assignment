@@ -48,8 +48,6 @@ export class EmployeeSercvice {
   }
 
   geEmployeetDetails(empid) {
-    const result = this.employees.find(({ id }) => id === empid);
-    console.log(result);
-    return result;
+    return this.http.get(Constants.HOST + 'employee/' + empid)
   }
 }

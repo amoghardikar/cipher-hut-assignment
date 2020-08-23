@@ -21,7 +21,12 @@ export class EmployeeDetailsComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.route.snapshot.params['empid']);
     this.id = this.route.snapshot.params['empid'];
-    this.employeeDetails = this.empService.geEmployeetDetails(this.id);
+    this.empService.geEmployeetDetails(this.id).subscribe((res) => {
+      console.log(res);
+      if (res['status'] == 'success') {
+        this.employeeDetails = res['data'];
+      }
+    });
   }
   back() {
     this.location.back();
@@ -33,14 +38,14 @@ export class EmployeeDetailsComponent implements OnInit {
 
   delete() {
     this.dialogService
-      .confirm()
+      .confirm('Do you want to delete the employee', '', '')
       .then((confirmerd) => {
-        if(confirmerd){
+        if (confirmerd) {
           this.empService.deleteEmployee(this.id).subscribe(
             (res) => {
               if (res['status'] == 'success') {
                 alert(res['message']);
-                this.router.navigate(['/employee-list'])
+                this.router.navigate(['/employee-list']);
               } else {
                 alert('Error while deleting employee');
               }
@@ -50,7 +55,6 @@ export class EmployeeDetailsComponent implements OnInit {
             }
           );
         }
-    
       })
       .catch(() =>
         console.log(

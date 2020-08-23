@@ -27,6 +27,7 @@ import { ConfirmationDialogService } from './Services/confirmation-dialog.servic
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 // Import library module
 import { NgxSpinnerModule } from "ngx-spinner";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +47,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
     FormsModule,
     ReactiveFormsModule,
     CustomFormsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    BrowserAnimationsModule
   ],
   providers: [ 
     NavService,

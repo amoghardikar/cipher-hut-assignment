@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router'
-import { NavService } from '../Services/nav-service.service'
+import { Router } from '@angular/router';
+import { NavService } from '../Services/nav-service.service';
 
 @Component({
   selector: 'app-login',
@@ -10,11 +10,21 @@ import { NavService } from '../Services/nav-service.service'
 export class LoginComponent implements OnInit {
   model: any = {};
 
+  emitValue = {};
+
   usernameHardcoded = 'user';
   passwordHardcoded = 'user';
   constructor(private router: Router, private navService: NavService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // localStorage.clear();
+    console.log('in init of login');
+    let isLoggedIn = localStorage.getItem('isloggedIn');
+    console.log(isLoggedIn)
+    if (isLoggedIn == 'true') {
+      this.router.navigate(['/employee-list']);
+    }
+  }
 
   onSubmit() {
     console.log(this.model);
@@ -28,8 +38,13 @@ export class LoginComponent implements OnInit {
     ) {
       alert('username and password did not match');
     } else {
-      this.navService.emitNavChangeEvent('loggedin')
-      this.router.navigate(['/employee-list'])
+      localStorage.setItem('isloggedIn', 'true');
+      let isLoggedIn = localStorage.getItem('isloggedIn');
+      console.log(isLoggedIn)
+      this.emitValue['loggedIn'] = true;
+      this.navService.emitNavChangeEvent(this.emitValue);
+
+      this.router.navigate(['/employee-list']);
     }
   }
 }

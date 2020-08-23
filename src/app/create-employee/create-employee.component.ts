@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeSercvice } from '../Services/emp-service.service';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-employee',
@@ -15,17 +15,21 @@ export class CreateEmployeeComponent implements OnInit {
 
   onSubmit() {
     console.log(this.model);
-    this.empService.createEmployee(this.model).subscribe(
-      (res) => {
-        console.log(res);
-        if (res['status'] == 'success') {
-          alert('Employee created successfully');
-          this.router.navigate(['employee-list'])
+    if (this.model['employee_name'].length < 5) {
+      alert('Name cannot be less than 5 characters');
+    } else {
+      this.empService.createEmployee(this.model).subscribe(
+        (res) => {
+          console.log(res);
+          if (res['status'] == 'success') {
+            alert('Employee created successfully');
+            this.router.navigate(['employee-list']);
+          }
+        },
+        (err) => {
+          alert('Error while creating employee');
         }
-      },
-      (err) => {
-        alert('Error while creating employee');
-      }
-    );
+      );
+    }
   }
 }

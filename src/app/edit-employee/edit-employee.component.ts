@@ -17,15 +17,19 @@ export class EditEmployeeComponent implements OnInit {
 
   ngOnInit(): void {
     let id = this.route.snapshot.params['empid'];
-    this.model = this.empService.geEmployeetDetails(id);
+    this.empService.geEmployeetDetails(id).subscribe((res) => {
+      if (res['status'] == 'success') {
+        this.model = res['data'];
+      }
+    });
     console.log(this.model);
   }
   onSubmit() {
     this.empService.updateEmployee(this.id, this.model).subscribe(
       (res) => {
         console.log(res);
-        if(res['status'] == 'success'){
-          alert('Employee updated successfully.')
+        if (res['status'] == 'success') {
+          alert('Employee updated successfully.');
         }
       },
       (err) => {

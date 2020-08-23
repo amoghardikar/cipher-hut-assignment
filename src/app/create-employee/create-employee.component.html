@@ -6,6 +6,7 @@
         <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm">
           <div class="form-group">
             <input
+              type="text"
               class="form-control"
               name="employee_name"
               [(ngModel)]="model.employee_name"
@@ -30,7 +31,7 @@
               [ngClass]="{ 'is-invalid': f.submitted && employee_age.invalid }"
               pattern="^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$"
               required
-              [min]="0"
+              [min]="18"
               [max]="100"
               placeholder="Age (Max 100)"
             />
@@ -42,28 +43,28 @@
                 Only numbers are permitted
               </div>
               <div *ngIf="employee_age.errors?.min">
-                Value cannot be smaller than '0'
+                Value cannot be smaller than '18'
               </div>
               <div *ngIf="employee_age.errors?.max">
                 Value cannot be greater than '100'
               </div>
-            
-           
             </div>
           </div>
           <div class="form-group">
             <input
-            type="number"
-            class="form-control"
-            name="employee_salary"
-            [(ngModel)]="model.employee_salary"
-            #employee_salary="ngModel"
-            [ngClass]="{ 'is-invalid': f.submitted && employee_salary.invalid }"
-            pattern="^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$"
-            required
-            [min]="10"
-            placeholder="Salary"
-          />
+              type="number"
+              class="form-control"
+              name="employee_salary"
+              [(ngModel)]="model.employee_salary"
+              #employee_salary="ngModel"
+              [ngClass]="{
+                'is-invalid': f.submitted && employee_salary.invalid
+              }"
+              pattern="^[+]?([0-9]+(?:[\.][0-9]*)?|\.[0-9]+)$"
+              required
+              [min]="10"
+              placeholder="Salary"
+            />
             <div *ngIf="f.submitted && employee_salary.invalid">
               <div *ngIf="employee_salary.errors.required">
                 Salary is required

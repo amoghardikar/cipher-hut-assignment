@@ -11,12 +11,13 @@ export class ConfirmationDialogService {
   constructor(private modalService: NgbModal) { }
 
   public confirm(
+    message: string,
     btnOkText: string = 'OK',
     btnCancelText: string = 'Cancel',
     dialogSize: 'sm'|'lg' = 'sm'): Promise<boolean> {
     const modalRef = this.modalService.open(ConfirmationDialogComponent, { size: dialogSize });
     modalRef.componentInstance.title = 'Please Confirm';
-    modalRef.componentInstance.message = 'Do you want to delete the employee?';
+    modalRef.componentInstance.message = message;
     modalRef.componentInstance.btnOkText = btnOkText;
     modalRef.componentInstance.btnCancelText = btnCancelText;
 
