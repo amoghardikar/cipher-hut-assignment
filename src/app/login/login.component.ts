@@ -38,10 +38,12 @@ export class LoginComponent implements OnInit {
     ) {
       alert('username and password did not match');
     } else {
+      // storing value to local storage if reload is happend then app wont push for login and timer weill not be set to 0.
       localStorage.setItem('isloggedIn', 'true');
       let isLoggedIn = localStorage.getItem('isloggedIn');
       console.log(isLoggedIn)
       this.emitValue['loggedIn'] = true;
+      // emmitting event to indicate that login is done, start the login count in header component.
       this.navService.emitNavChangeEvent(this.emitValue);
 
       this.router.navigate(['/employee-list']);

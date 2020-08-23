@@ -21,6 +21,7 @@ export class HeaderComponent implements OnInit {
     console.log('in header init');
     this.loggedinstorageValue = localStorage.getItem('isloggedIn');
     console.log(this.loggedinstorageValue);
+    // check if this is a relaod, then fetch values from localstorage.
     if (
       this.loggedinstorageValue !== null &&
       this.loggedinstorageValue == 'true'
@@ -31,6 +32,7 @@ export class HeaderComponent implements OnInit {
     } else {
       
     }
+    //subscription for listening the emmiter for starting login count.
     this.subscription = this.navService
       .getNavChangeEmitter()
       .subscribe((emmittedValue) => {
@@ -57,6 +59,7 @@ export class HeaderComponent implements OnInit {
       localStorage.setItem('loggedinTime', String(this.time));
     }, 1000);
   }
+  // converting seconds to time
   secondsToTime(secs) {
     var hours = Math.floor(secs / (60 * 60));
 
@@ -73,6 +76,7 @@ export class HeaderComponent implements OnInit {
     };
     return obj;
   }
+  // clearing the interval and local storage.
   logout() {
     this.loggedIn = false;
     localStorage.clear();
